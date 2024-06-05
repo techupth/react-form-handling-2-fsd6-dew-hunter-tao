@@ -15,10 +15,15 @@ const handleClick = (event) => {
     description: descText
   };
   alert(JSON.stringify(setObject, null, 1));
+
+  setNameText("");
+  setImgUrl("");
+  setPriceNum("");
+  setDescText("");
 };
 
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={handleClick}>
       <h1>Create Product Form</h1>
       <div className="input-container">
         <label>
@@ -29,6 +34,7 @@ const handleClick = (event) => {
             type="text"
             placeholder="Enter name here"
             onChange={(event) => {setNameText(event.target.value)}}
+            value = {nameText}
           />
         </label>
       </div>
@@ -40,9 +46,8 @@ const handleClick = (event) => {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={(event) => {setImgUrl(event.target.value)
-            }}
-            
+            onChange={(event) => {setImgUrl(event.target.value)}}
+            value = {imgUrl}
           />
         </label>
       </div>
@@ -54,10 +59,8 @@ const handleClick = (event) => {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={(event) => {setPriceNum(Number(event.target.value))
-              
-            }}
-            
+            onChange={(event) => {setPriceNum(Number(event.target.value))}}
+            value = {priceNum}
           />
         </label>
       </div>
@@ -70,13 +73,14 @@ const handleClick = (event) => {
             type="text"
             placeholder="Enter description here"
             onChange={(event) => {setDescText(event.target.value)}}
+            value = {descText}
             rows={4}
             cols={30}
           />
         </label>
       </div>
       <div className="form-actions">
-        <button type="submit" onClick={handleClick}>Create</button>
+        <button type="submit">Create</button>
       </div>
     </form>
   );
