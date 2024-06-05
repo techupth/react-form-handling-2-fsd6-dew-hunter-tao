@@ -1,4 +1,22 @@
+import { useState } from "react";
+
 function ProductForm() {
+const [nameText, setNameText] = useState("");
+const [imgUrl, setImgUrl] = useState("");
+const [priceNum, setPriceNum] = useState("");
+const [descText, setDescText] = useState("");
+
+const handleClick = (event) => {
+  event.preventDefault();
+  let setObject = {
+    name: nameText,
+    price: priceNum,
+    image: imgUrl,
+    description: descText
+  };
+  alert(JSON.stringify(setObject, null, 1));
+};
+
   return (
     <form className="post-form">
       <h1>Create Product Form</h1>
@@ -10,7 +28,7 @@ function ProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            onChange={(event) => {setNameText(event.target.value)}}
           />
         </label>
       </div>
@@ -22,7 +40,9 @@ function ProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            onChange={(event) => {setImgUrl(event.target.value)
+            }}
+            
           />
         </label>
       </div>
@@ -34,7 +54,10 @@ function ProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={() => {}}
+            onChange={(event) => {setPriceNum(Number(event.target.value))
+              
+            }}
+            
           />
         </label>
       </div>
@@ -46,14 +69,14 @@ function ProductForm() {
             name="description"
             type="text"
             placeholder="Enter description here"
-            onChange={() => {}}
+            onChange={(event) => {setDescText(event.target.value)}}
             rows={4}
             cols={30}
           />
         </label>
       </div>
       <div className="form-actions">
-        <button type="submit">Create</button>
+        <button type="submit" onClick={handleClick}>Create</button>
       </div>
     </form>
   );
